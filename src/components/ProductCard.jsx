@@ -5,17 +5,15 @@ import { addToCart } from "../features/cart/cartSlice";
 function ProductCard({ product }) {
   const dispatch = useDispatch();
 
+  const price = product.price * 56;
+
   return (
     <div className="card">
       <img src={product.thumbnail} alt={product.title} />
+
       <h3>{product.title}</h3>
 
-      <p>
-        {new Intl.NumberFormat("en-PH", {
-          style: "currency",
-          currency: "PHP",
-        }).format(product.price * 56)}
-      </p>
+      <p>₱{price.toLocaleString()}</p>
 
       <Link to={`/product/${product.id}`}>
         <button>View</button>
